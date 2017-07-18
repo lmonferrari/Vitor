@@ -62,39 +62,22 @@ void imprimi_matriz_aumentada(double A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
 
 	for (int l = 0; l < LINHA; l++) //linha
 	{
-		cout << "Equacao : " << l + 1 << endl;
 		for (int c = 0; c < COLUNA_EXTENDIDA; c++) //coluna
 		{
-			if (c < COLUNA_EXTENDIDA - 1) {
-				cout << "x" << c + 1 << " " << A_aumentada[l][c];
-				if (c != COLUNA_EXTENDIDA - 2) {
-					cout << " + ";
-				}
-			}
-			else {
-				cout << " = " << A_aumentada[l][c];
-			}
+			cout << A_aumentada[l][c] << " ";
 		}
 		cout << endl << endl;
 	}
 }
 
 void imprimi_matriz(double A_coeficientes[LINHA][COLUNA]) {
+	cout.precision(4);
 
 	for (int l = 0; l < LINHA; l++) //linha
 	{
-		cout << "Equacao : " << l + 1 << endl;
 		for (int c = 0; c < COLUNA; c++) //coluna
 		{
-			if (c < COLUNA - 1) {
-				cout << "x" << c + 1 << " " << A_coeficientes[l][c];
-				if (c != COLUNA - 2) {
-					cout << " + ";
-				}
-			}
-			else {
-				cout << " x" << c + 1 << " " << A_coeficientes[l][c];
-			}
+			cout << A_coeficientes[l][c] << " ";
 		}
 		cout << endl << endl;
 	}
@@ -125,16 +108,16 @@ int main(void)
 
 	double A_coeficientes[LINHA][COLUNA] =
 	{
-		0.5, 0, 0, 0, 0, 0 ,
-		-(sqrt(3)) / 2, 1, 0, 0, 0, 0,
-		0, -1, 1, 0, 0, 0,
-		0, 0, 0, 1, 0, 0,
-		0, 0, 0, -(sqrt(3)) / 2,(sqrt(3)) / 2, 0,
-		1, 0, 0, 0.5, 0.5, -1
+		0.5000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000 ,
+		-(sqrt(3)) / 2, 1.0000, 0.0000, 0.0000, 0.0000, 0.0000,
+		0.0000, -1.0000, 1.0000, 0.0000, 0.0000, 0.00000,
+		0.0000, 0.0000, 0.0000, 1.0000, 0.0000, 0.0000,
+		0.0000, 0.0000, 0.0000, -(sqrt(3)) / 2,(sqrt(3)) / 2.0000, 0.0000,
+		1.0000, 0.0000, 0.0000, 0.5000, 0.5000, -1.0000
 	};
 	double A_resultados[LINHA] =
 	{
-		4, 0, 0, 4, 0, 0
+		P1, 0, 0, P2, 0, 0
 	};
 	double A_aumentada[LINHA][COLUNA_EXTENDIDA];
 

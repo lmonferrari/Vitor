@@ -1,2 +1,4 @@
 ﻿  Primeiro.cpp
-c:\users\luiz\documents\github\vitor\primeiro\primeiro\primeiro.cpp(162): fatal error C1010: fim de arquivo inesperado durante procura por cabeçalho pré-compilado. Você esqueceu de adicionar '#include "stdafx.h"' à sua fonte?
+c:\users\luiz\documents\github\vitor\primeiro\primeiro\primeiro.cpp(15): warning C4101: 'n': variável local não referenciada
+  Primeiro.vcxproj -> C:\Users\luiz\Documents\GitHub\Vitor\Primeiro\Debug\Primeiro.exe
+  Primeiro.vcxproj -> C:\Users\luiz\Documents\GitHub\Vitor\Primeiro\Debug\Primeiro.pdb (Partial PDB)
