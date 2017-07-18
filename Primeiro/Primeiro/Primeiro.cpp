@@ -36,10 +36,8 @@ void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
 		for (int j = i + 1; j <= LINHA - 1; j++)
 		{
 			soma = soma + A_aumentada[i][j] * valores[j];
-			cout << " valor de J: " << j << endl;
 		}
 		valores[i] = (A_aumentada[i][COLUNA_EXTENDIDA - 1] - soma) / A_aumentada[i][i];
-		cout << " valor de I: " << i << endl;
 	}
 	valores[0] = (A_aumentada[0][COLUNA_EXTENDIDA - 1] - soma) / A_aumentada[0][0];
 }
