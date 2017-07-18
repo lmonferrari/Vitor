@@ -9,6 +9,7 @@
 
 using namespace std;
 
+//implementação do algoritmo de Gauss
 void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
 
 	double auxiliar, soma = 0;
