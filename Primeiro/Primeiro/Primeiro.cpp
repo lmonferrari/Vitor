@@ -43,8 +43,6 @@ void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
 }
 
 void imprime_valores(double valores[LINHA]) {
-	string mensagem(" ");
-
 	for (int i = 0; i < LINHA; i++)
 	{
 		if (valores[i] < 0) {
@@ -142,7 +140,6 @@ int main(void)
 	
 	cout << "\n\nImprimindo valores de X: \n" << endl;
 	imprime_valores(valores);
-
 
 	return 0;
 }
