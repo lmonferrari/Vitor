@@ -43,10 +43,16 @@ void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
 }
 
 void imprime_valores(double valores[LINHA]) {
+	string mensagem(" ");
 
 	for (int i = 0; i < LINHA; i++)
 	{
-		cout << "valores de x" << i + 1 << " " << valores[i] << endl;
+		if (valores[i] < 0) {
+			cout << "valores de x" << i + 1 << " " << valores[i] << " Compressao" << endl;
+		}
+		else {
+			cout << "valores de x" << i + 1 << " " << valores[i] << " Tracao" << endl;
+		}	
 	}
 }
 
@@ -109,11 +115,11 @@ int main(void)
 	double A_coeficientes[LINHA][COLUNA] =
 	{
 		0.5000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000 ,
-		-(sqrt(3)) / 2, 1.0000, 0.0000, 0.0000, 0.0000, 0.0000,
-		0.0000, -1.0000, 1.0000, 0.0000, 0.0000, 0.00000,
+		-(sqrt(3))/2, -1.0000, 0.0000, 0.0000, 0.0000, 0.0000,
+		0.0000, 1.0000, -1.0000, 0.0000, 0.0000, 0.00000,
 		0.0000, 0.0000, 0.0000, 1.0000, 0.0000, 0.0000,
-		0.0000, 0.0000, 0.0000, -(sqrt(3)) / 2,(sqrt(3)) / 2, 0.0000,
-		1.0000, 0.0000, 0.0000, 0.5000, 0.5000, -1.0000
+		0.0000, 0.0000, 0.0000, -(sqrt(3))/2,-(sqrt(3))/2, 0.0000,
+		1.0000, 0.0000, 0.0000, 0.5000, -0.5000, -1.0000
 	};
 	double A_resultados[LINHA] =
 	{
