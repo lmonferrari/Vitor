@@ -44,6 +44,7 @@ void gauss(float A_aumentada[LINHA][COLUNA_EXTENDIDA], float valores[LINHA]) {
 }
 
 void imprime_valores(float valores[LINHA]) {
+	
 	for (int i = 0; i < LINHA; i++)
 	{
 		if (valores[i] < 0) {
@@ -56,8 +57,8 @@ void imprime_valores(float valores[LINHA]) {
 	cout << endl;
 }
 
-
 void imprime_vetor(float vetor[LINHA]) {
+	
 	for (int i = 0; i < LINHA; i++)
 	{
 		cout << "Equacao " << i + 1 << ": " << vetor[i] << " " << endl;
@@ -116,7 +117,6 @@ int main(void)
 	cout << fixed; 
 
 	cout << "# TRABALHO FEITO POR VITOR MONTEIRO# \n#   Objetivo: Calculo de trelica   #\n\n";
-
 
 	float P1, P2 = 0; // pesos - valores dados pelo usuário
 	float valores[TAMANHO]; // cb cd de db be ba
