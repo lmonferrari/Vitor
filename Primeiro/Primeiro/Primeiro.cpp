@@ -10,9 +10,9 @@
 using namespace std;
 
 //implementação do algoritmo de Gauss
-void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
+void gauss(float A_aumentada[LINHA][COLUNA_EXTENDIDA], float valores[LINHA]) {
 
-	double auxiliar, soma = 0;
+	float auxiliar, soma = 0;
 	int n;
 
 	for (int c = 0; c <= COLUNA; c++)
@@ -43,52 +43,62 @@ void gauss(double A_aumentada[LINHA][COLUNA_EXTENDIDA], double valores[LINHA]) {
 	valores[0] = (A_aumentada[0][COLUNA_EXTENDIDA - 1] - soma) / A_aumentada[0][0];
 }
 
-void imprime_valores(double valores[LINHA]) {
+void imprime_valores(float valores[LINHA]) {
 	for (int i = 0; i < LINHA; i++)
 	{
 		if (valores[i] < 0) {
 			cout << "valores de x" << i + 1 << " " << valores[i] << " Compressao" << endl;
 		}
 		else {
-			cout << "valores de x" << i + 1 << " " << valores[i] << " Tracao" << endl;
+			cout << "valores de x" << i + 1 << "  " << valores[i] << " Tracao" << endl;
 		}	
 	}
+	cout << endl;
 }
 
 
-void imprime_vetor(double vetor[LINHA]) {
+void imprime_vetor(float vetor[LINHA]) {
 	for (int i = 0; i < LINHA; i++)
 	{
 		cout << "Equacao " << i + 1 << ": " << vetor[i] << " " << endl;
 	}
 }
 
-void imprimi_matriz_aumentada(double A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
+void imprimi_matriz_aumentada(float A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
 
 	for (int l = 0; l < LINHA; l++) //linha
 	{
 		for (int c = 0; c < COLUNA_EXTENDIDA; c++) //coluna
 		{
-			cout << A_aumentada[l][c] << " ";
+			if (A_aumentada[l][c] < 0) {
+				cout << "| " << A_aumentada[l][c] << " ";
+			}
+			else {
+				cout << "|  " << A_aumentada[l][c] << " ";
+			}
 		}
-		cout << endl << endl;
+		cout << endl;
 	}
 }
 
-void imprimi_matriz(double A_coeficientes[LINHA][COLUNA]) {
-	cout.precision(4);
+void imprimi_matriz(float A_coeficientes[LINHA][COLUNA]) {
 
 	for (int l = 0; l < LINHA; l++) //linha
 	{
 		for (int c = 0; c < COLUNA; c++) //coluna
 		{
-			cout << A_coeficientes[l][c] << " ";
+			if (A_coeficientes[l][c] < 0) {
+				cout << "| " << A_coeficientes[l][c] << " ";
+			}
+			else {
+				cout << "|  " << A_coeficientes[l][c] << " ";
+			}
 		}
-		cout << endl << endl;
+		cout << endl;
 	}
 }
 
-void cria_matriz_aumentada(double A_coeficientes[LINHA][COLUNA], double A_resultados[LINHA], double A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
+void cria_matriz_aumentada(float A_coeficientes[LINHA][COLUNA], float A_resultados[LINHA], float A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
 
 	for (int l = 0; l < LINHA; l++)
 	{
@@ -102,16 +112,22 @@ void cria_matriz_aumentada(double A_coeficientes[LINHA][COLUNA], double A_result
 
 int main(void)
 {
-	double P1, P2 = 0; // pesos - valores dados pelo usuário
-	double valores[TAMANHO]; // cb cd de db be ba
+	cout.precision(4);
+	cout << fixed; 
 
-	cout << "De o valor para Peso 1." << endl;
+	cout << "# TRABALHO FEITO POR VITOR MONTEIRO# \n#   Objetivo: Calculo de trelica   #\n\n";
+
+
+	float P1, P2 = 0; // pesos - valores dados pelo usuário
+	float valores[TAMANHO]; // cb cd de db be ba
+
+	cout << "[+] De o valor para Peso 1." << endl;
 	cin >> P1;
-	cout << "De o valor para Peso 2." << endl;
+	cout << "[+] De o valor para Peso 2." << endl;
 	cin >> P2;
-	cout << "Pesos selecionados - " << "P1: " << P1 << " | P2: " << P2 << endl << endl;
+	cout << "\n[+]Pesos selecionados " << "\n   [-]P1: " << P1 << "\n   [-]P2: " << P2 << endl;
 
-	double A_coeficientes[LINHA][COLUNA] =
+	float A_coeficientes[LINHA][COLUNA] =
 	{
 		0.5000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000 ,
 		-(sqrt(3))/2, -1.0000, 0.0000, 0.0000, 0.0000, 0.0000,
@@ -120,26 +136,27 @@ int main(void)
 		0.0000, 0.0000, 0.0000, -(sqrt(3))/2,-(sqrt(3))/2, 0.0000,
 		1.0000, 0.0000, 0.0000, 0.5000, -0.5000, -1.0000
 	};
-	double A_resultados[LINHA] =
+	float A_resultados[LINHA] =
 	{
 		P2, 0, 0, P1, 0, 0
 	};
-	double A_aumentada[LINHA][COLUNA_EXTENDIDA];
+	float A_aumentada[LINHA][COLUNA_EXTENDIDA];
 
-	cout << "Matriz de coeficientes" << endl << endl;
+	cout << "\n[+]Matriz de coeficientes" << endl << endl;
 	imprimi_matriz(A_coeficientes);
 	
-	cout << "\n\nVetor de resultados" << endl << endl;
+	cout << "\n[+]Vetor de resultados" << endl << endl;
 	imprime_vetor(A_resultados);
 	
-	cout << "\n\nMatriz aumentada para usar metodo de Gauss" << endl << endl;
+	cout << "\n[+]Criando matriz aumentada para usar metodo de Gauss\n\n";
 	cria_matriz_aumentada(A_coeficientes, A_resultados, A_aumentada);
-	gauss(A_aumentada, valores);
-	
-	cout << "\n\nMatriz apos Algoritmo de Gauss\n" << endl;
 	imprimi_matriz_aumentada(A_aumentada);
 	
-	cout << "\n\nImprimindo valores de X: \n" << endl;
+	cout << "\n[+]Matriz apos Algoritmo de Gauss\n" << endl;
+	gauss(A_aumentada, valores);
+	imprimi_matriz_aumentada(A_aumentada);
+	
+	cout << "\n[+]Imprimindo valores de X: \n" << endl;
 	imprime_valores(valores);
 
 	return 0;
