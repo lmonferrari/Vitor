@@ -115,11 +115,16 @@ int main(void)
 {
 	cout.precision(4);
 	cout << fixed; 
-
-	cout << "# TRABALHO FEITO POR VITOR MONTEIRO# \n#   Objetivo: Calculo de trelica   #\n\n";
+	
+	cout << "#####################################\n";
+	cout << "#                                   #\n";
+	cout << "# TRABALHO FEITO POR VITOR MONTEIRO # \n#    Objetivo: Calculo de trelica   #\n";
+	cout << "#                                   #\n";
+	cout << "#####################################\n\n";
 
 	float P1, P2 = 0; // pesos - valores dados pelo usuário
 	float valores[TAMANHO]; // cb cd de db be ba
+	char pause;
 
 	cout << "[+] De o valor para Peso 1." << endl;
 	cin >> P1;
@@ -144,20 +149,26 @@ int main(void)
 
 	cout << "\n[+]Matriz de coeficientes" << endl << endl;
 	imprimi_matriz(A_coeficientes);
+
+	cin >> pause;
 	
 	cout << "\n[+]Vetor de resultados" << endl << endl;
 	imprime_vetor(A_resultados);
+	cin >> pause;
 	
 	cout << "\n[+]Criando matriz aumentada para usar metodo de Gauss\n\n";
 	cria_matriz_aumentada(A_coeficientes, A_resultados, A_aumentada);
 	imprimi_matriz_aumentada(A_aumentada);
+	cin >> pause;
 	
 	cout << "\n[+]Matriz apos Algoritmo de Gauss\n" << endl;
 	gauss(A_aumentada, valores);
 	imprimi_matriz_aumentada(A_aumentada);
+	cin >> pause;
 	
 	cout << "\n[+]Imprimindo valores de X: \n" << endl;
 	imprime_valores(valores);
+	cin >> pause;
 
 	return 0;
 }
