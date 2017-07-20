@@ -115,7 +115,7 @@ int main(void)
 {
 	cout.precision(4);
 	cout << fixed; 
-	
+
 	cout << "#####################################\n";
 	cout << "#                                   #\n";
 	cout << "# TRABALHO FEITO POR VITOR MONTEIRO # \n#    Objetivo: Calculo de trelica   #\n";
