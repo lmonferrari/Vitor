@@ -123,6 +123,7 @@ int main(void)
 	cout << "#####################################\n\n";
 
 	float P1, P2 = 0; // pesos - valores dados pelo usuário
+	float *PP1, *PP2; // ponteiros para os pesos
 	float valores[TAMANHO]; // cb cd de db be ba
 	char pause;
 
@@ -130,7 +131,14 @@ int main(void)
 	cin >> P1;
 	cout << "[+] De o valor para Peso 2." << endl;
 	cin >> P2;
-	cout << "\n[+]Pesos selecionados " << "\n   [-]P1: " << P1 << "\n   [-]P2: " << P2 << endl;
+	
+	// utilizando ponteiros
+	PP1 = &P1;
+	PP2 = &P2;
+
+	cout << "\n[+]Pesos selecionados " << "\n   [-]P1: " << *PP1 << "\n   [-]P2: " << *PP2 << endl;
+	cout << "\n[+]Endereco de memoria do Pesos selecionados " << "\n   [-]P1: " << PP1 << "\n   [-]P2: " << PP2 << endl;
+	cin >> pause;
 
 	float A_coeficientes[LINHA][COLUNA] =
 	{
@@ -143,13 +151,12 @@ int main(void)
 	};
 	float A_resultados[LINHA] =
 	{
-		P2, 0, 0, P1, 0, 0
+		P2, 0, 0, P1, 0, 0,
 	};
 	float A_aumentada[LINHA][COLUNA_EXTENDIDA];
 
 	cout << "\n[+]Matriz de coeficientes" << endl << endl;
 	imprimi_matriz(A_coeficientes);
-
 	cin >> pause;
 	
 	cout << "\n[+]Vetor de resultados" << endl << endl;
@@ -166,7 +173,7 @@ int main(void)
 	imprimi_matriz_aumentada(A_aumentada);
 	cin >> pause;
 	
-	cout << "\n[+]Imprimindo valores de X: \n" << endl;
+	cout << "\n[+]Imprimindo valores dos nos da trelica: \n" << endl;
 	imprime_valores(valores);
 	cin >> pause;
 
