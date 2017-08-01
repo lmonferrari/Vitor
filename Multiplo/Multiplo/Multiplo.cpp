@@ -33,7 +33,7 @@ int main()
 	}
 	else
 	{
-		cout << "Eh multiplo" << endl;;
+		cout << "Eh multiplo" << endl;
 	}
 
 	return 0;
