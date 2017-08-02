@@ -7,15 +7,12 @@ int calcula(int n1, int n2) {
 	if (n1 % n2 == 0) {
 		return 1;
 	}
-	else {
 		return 0;
-	}
 }
 
 int main()
 {
-	int n1, n2;
-	int resultado;
+	int n1, n2, resultado;
 
 	cout << "Digite um numero: ";
 	cin >> n1;
