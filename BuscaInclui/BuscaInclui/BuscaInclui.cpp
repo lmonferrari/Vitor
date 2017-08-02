@@ -17,10 +17,12 @@ int consulta(string matriz[LINHA][COLUNA],string pesquisa) {
 	for (int l = 0; l < LINHA; l++)
 	{
 		if (pesquisa == matriz[l][auxiliar]) {
+			cout << "Existe\n";
 			return 0;
 		}
 		auxiliar++;
 	}
+	cout << "Nao Existe\n";
 	return -1;
 }
 
