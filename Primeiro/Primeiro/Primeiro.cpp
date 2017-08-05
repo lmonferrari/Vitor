@@ -1,24 +1,21 @@
 #include "stdafx.h"
 #include <iostream>
-
-#define TAMANHO 6
-#define LINHA 6
-#define COLUNA 6
-#define COLUNA_EXTENDIDA 7
+#include <string>
 
 using namespace std;
 
 //prototipos
-void gauss(float A_aumentada[LINHA][COLUNA_EXTENDIDA], float valores[LINHA]);
-void imprime_valores(float valores[LINHA]);
-void imprime_vetor(float vetor[LINHA]);
-void imprimi_matriz_aumentada(float A_aumentada[LINHA][COLUNA_EXTENDIDA]);
-void imprimi_matriz(float A_coeficientes[LINHA][COLUNA]);
-void cria_matriz_aumentada(float A_coeficientes[LINHA][COLUNA], float A_resultados[LINHA], float A_aumentada[LINHA][COLUNA_EXTENDIDA]);
+void gauss(float A_aumentada[6][7], float valores[6]);
+void imprime_valores(float valores[6],string forca[6]);
+void imprime_vetor(float vetor[6]);
+void imprimi_matriz_aumentada(float A_aumentada[6][7]);
+void imprimi_matriz(float A_coeficientes[6][6]);
+void cria_matriz_aumentada(float A_coeficientes[6][6], float A_resultados[6], float A_aumentada[6][7]);
 
 
 int main(void)
 {
+	//limitando as casas decimais
 	cout.precision(4);
 	cout << fixed;
 
@@ -30,7 +27,10 @@ int main(void)
 
 	float P1, P2 = 0; // pesos - valores dados pelo usuário
 	float *PP1, *PP2; // ponteiros para os pesos
-	float valores[TAMANHO]; // cb cd de db be ba
+	float valores[6]; // cb cd de db be ba
+	string forca[6] = {
+		"Fbc","Fcd","Fde","Fdb","Fbe","Fba"
+	};
 	char pause;
 
 	cout << "[+] De o valor para Peso 1." << endl;
@@ -46,7 +46,7 @@ int main(void)
 	cout << "\n[+]Endereco de memoria do Pesos selecionados " << "\n   [-]P1: " << PP1 << "\n   [-]P2: " << PP2 << endl;
 	cin >> pause;
 
-	float A_coeficientes[LINHA][COLUNA] =
+	float A_coeficientes[6][6] =
 	{
 		0.5000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000 ,
 		-0.86602540378, -1.0000, 0.0000, 0.0000, 0.0000, 0.0000,
@@ -55,11 +55,11 @@ int main(void)
 		0.0000, 0.0000, 0.0000, -0.86602540378,-0.86602540378, 0.0000,
 		1.0000, 0.0000, 0.0000, 0.5000, -0.5000, -1.0000
 	};
-	float A_resultados[LINHA] =
+	float A_resultados[6] =
 	{
 		P2, 0, 0, P1, 0, 0,
 	};
-	float A_aumentada[LINHA][COLUNA_EXTENDIDA];
+	float A_aumentada[6][7];
 
 	cout << "\n[+]Matriz de coeficientes" << endl << endl;
 	imprimi_matriz(A_coeficientes);
@@ -80,73 +80,73 @@ int main(void)
 	cin >> pause;
 
 	cout << "\n[+]Imprimindo valores dos nos da trelica: \n" << endl;
-	imprime_valores(valores);
+	imprime_valores(valores,forca);
 	cin >> pause;
 
 	return 0;
 }
 
 //implementação do algoritmo de Gauss
-void gauss(float A_aumentada[LINHA][COLUNA_EXTENDIDA], float valores[LINHA]) {
+void gauss(float A_aumentada[6][7], float valores[6]) {
 
 	float auxiliar, soma = 0;
 	int n;
 
-	for (int c = 0; c <= COLUNA; c++)
+	for (int c = 0; c <= 6; c++)
 	{
-		for (int l = 0; l < LINHA; l++)
+		for (int l = 0; l < 6; l++)
 		{
 			if (l > c)
 			{
 				auxiliar = -(A_aumentada[l][c] / A_aumentada[c][c]);
-				for (int k = 0; k <= COLUNA; k++) {
+				for (int k = 0; k <= 6; k++) {
 					A_aumentada[l][k] = auxiliar * A_aumentada[c][k] + A_aumentada[l][k];
 				}
 			}
 		}
 	}
 
-	valores[LINHA - 1] = A_aumentada[LINHA - 1][COLUNA_EXTENDIDA - 1] / A_aumentada[LINHA - 1][COLUNA_EXTENDIDA - 2];
+	valores[6 - 1] = A_aumentada[6 - 1][7 - 1] / A_aumentada[6 - 1][7 - 2];
 
-	for (int i = LINHA - 1; i >= 1; i--)
+	for (int i = 6 - 1; i >= 1; i--)
 	{
 		soma = 0;
-		for (int j = i + 1; j <= LINHA - 1; j++)
+		for (int j = i + 1; j <= 6 - 1; j++)
 		{
 			soma = soma + A_aumentada[i][j] * valores[j];
 		}
-		valores[i] = (A_aumentada[i][COLUNA_EXTENDIDA - 1] - soma) / A_aumentada[i][i];
+		valores[i] = (A_aumentada[i][7 - 1] - soma) / A_aumentada[i][i];
 	}
-	valores[0] = (A_aumentada[0][COLUNA_EXTENDIDA - 1] - soma) / A_aumentada[0][0];
+	valores[0] = (A_aumentada[0][7 - 1] - soma) / A_aumentada[0][0];
 }
 
-void imprime_valores(float valores[LINHA]) {
+void imprime_valores(float valores[6],string forca[6]) {
 
-	for (int i = 0; i < LINHA; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		if (valores[i] < 0) {
-			cout << "valores de x" << i + 1 << " " << valores[i] << " Compressao" << endl;
+			cout << forca[i] << " " << valores[i] << " Compressao" << endl;
 		}
 		else {
-			cout << "valores de x" << i + 1 << "  " << valores[i] << " Tracao" << endl;
+			cout << forca[i] << "  " << valores[i] << " Tracao" << endl;
 		}
 	}
 	cout << endl;
 }
 
-void imprime_vetor(float vetor[LINHA]) {
+void imprime_vetor(float vetor[6]) {
 
-	for (int i = 0; i < LINHA; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		cout << "Equacao " << i + 1 << ": " << vetor[i] << " " << endl;
 	}
 }
 
-void imprimi_matriz_aumentada(float A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
+void imprimi_matriz_aumentada(float A_aumentada[6][7]) {
 
-	for (int l = 0; l < LINHA; l++) //linha
+	for (int l = 0; l < 6; l++) //linha
 	{
-		for (int c = 0; c < COLUNA_EXTENDIDA; c++) //coluna
+		for (int c = 0; c < 7; c++) //coluna
 		{
 			if (A_aumentada[l][c] < 0) {
 				cout << "| " << A_aumentada[l][c] << " ";
@@ -159,11 +159,11 @@ void imprimi_matriz_aumentada(float A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
 	}
 }
 
-void imprimi_matriz(float A_coeficientes[LINHA][COLUNA]) {
+void imprimi_matriz(float A_coeficientes[6][6]) {
 
-	for (int l = 0; l < LINHA; l++) //linha
+	for (int l = 0; l < 6; l++) //linha
 	{
-		for (int c = 0; c < COLUNA; c++) //coluna
+		for (int c = 0; c < 6; c++) //coluna
 		{
 			if (A_coeficientes[l][c] < 0) {
 				cout << "| " << A_coeficientes[l][c] << " ";
@@ -176,12 +176,12 @@ void imprimi_matriz(float A_coeficientes[LINHA][COLUNA]) {
 	}
 }
 
-void cria_matriz_aumentada(float A_coeficientes[LINHA][COLUNA], float A_resultados[LINHA], float A_aumentada[LINHA][COLUNA_EXTENDIDA]) {
+void cria_matriz_aumentada(float A_coeficientes[6][6], float A_resultados[6], float A_aumentada[6][7]) {
 
-	for (int l = 0; l < LINHA; l++)
+	for (int l = 0; l < 6; l++)
 	{
-		A_aumentada[l][COLUNA_EXTENDIDA - 1] = A_resultados[l];
-		for (int c = 0; c < COLUNA; c++)
+		A_aumentada[l][7 - 1] = A_resultados[l];
+		for (int c = 0; c < 6; c++)
 		{
 			A_aumentada[l][c] = A_coeficientes[l][c];
 		}
