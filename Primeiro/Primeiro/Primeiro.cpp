@@ -12,7 +12,6 @@ void imprimi_matriz_aumentada(float A_aumentada[6][7]);
 void imprimi_matriz(float A_coeficientes[6][6]);
 void cria_matriz_aumentada(float A_coeficientes[6][6], float A_resultados[6], float A_aumentada[6][7]);
 
-
 int main(void)
 {
 	//limitando as casas decimais
@@ -106,7 +105,7 @@ void gauss(float A_aumentada[6][7], float valores[6]) {
 		}
 	}
 
-	valores[6 - 1] = A_aumentada[6 - 1][7 - 1] / A_aumentada[6 - 1][7 - 2];
+	valores[6 - 1] = A_aumentada[5][6] / A_aumentada[5][5];
 
 	for (int i = 6 - 1; i >= 1; i--)
 	{
@@ -115,9 +114,9 @@ void gauss(float A_aumentada[6][7], float valores[6]) {
 		{
 			soma = soma + A_aumentada[i][j] * valores[j];
 		}
-		valores[i] = (A_aumentada[i][7 - 1] - soma) / A_aumentada[i][i];
+		valores[i] = (A_aumentada[i][6] - soma) / A_aumentada[i][i];
 	}
-	valores[0] = (A_aumentada[0][7 - 1] - soma) / A_aumentada[0][0];
+	valores[0] = (A_aumentada[0][6] - soma) / A_aumentada[0][0];
 }
 
 void imprime_valores(float valores[6],string forca[6]) {
@@ -180,7 +179,7 @@ void cria_matriz_aumentada(float A_coeficientes[6][6], float A_resultados[6], fl
 
 	for (int l = 0; l < 6; l++)
 	{
-		A_aumentada[l][7 - 1] = A_resultados[l];
+		A_aumentada[l][6] = A_resultados[l];
 		for (int c = 0; c < 6; c++)
 		{
 			A_aumentada[l][c] = A_coeficientes[l][c];
