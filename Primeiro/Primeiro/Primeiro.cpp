@@ -8,7 +8,6 @@ using namespace std;
 void gauss(float A_equacoes[6][7], float valores[6]);
 void imprimi_matriz(float A_equacoes[6][7]);
 void imprime_valores(float valores[6], string forca[6]);
-void imprimi_matriz_resolvida(float A_equacoes[6][7], float valores[6]);
 
 int main(void)
 {
@@ -57,12 +56,12 @@ int main(void)
 	imprimi_matriz(A_equacoes);
 	cin >> pause;
 
-	cout << "\n[+]Matriz apos Algoritmo de Gauss\n" << endl;
+	cout << "\n[+]Matriz Escalonada\n" << endl;
 	gauss(A_equacoes, valores);
-	imprimi_matriz_resolvida(A_equacoes,valores);
+	imprimi_matriz(A_equacoes);
 	cin >> pause;
 
-	cout << "\n[+]Imprimindo valores dos nos da trelica: \n" << endl;
+	cout << "\n[+]Imprimindo valores dos nos da trelica apos algoritmo de Gauss: \n" << endl;
 	imprime_valores(valores, forca);
 	cin >> pause;
 
@@ -89,12 +88,12 @@ void gauss(float A_equacoes[6][7], float valores[6]) {
 		}
 	}
 
-	valores[6 - 1] = A_equacoes[5][6] / A_equacoes[5][5];
+	valores[5] = A_equacoes[5][6] / A_equacoes[5][5];
 
-	for (int i = 6 - 1; i >= 1; i--)
+	for (int i = 5 ; i >= 1; i--)
 	{
 		soma = 0;
-		for (int j = i + 1; j <= 6 - 1; j++)
+		for (int j = i + 1; j <= 5; j++)
 		{
 			soma = soma + A_equacoes[i][j] * valores[j];
 		}
@@ -129,29 +128,6 @@ void imprimi_matriz(float A_equacoes[6][7]) {
 			else {
 				cout << "|  " << A_equacoes[l][c] << " ";
 			}
-		}
-		cout << endl;
-	}
-}
-
-void imprimi_matriz_resolvida(float A_equacoes[6][7], float valores[6]) {
-
-	for (int l = 0; l < 6; l++) //linha
-	{
-		for (int c = 0; c < 6; c++) //coluna
-		{
-			if (A_equacoes[l][c] < 0) {
-				cout << "| " << A_equacoes[l][c] << " ";
-			}
-			else {
-				cout << "|  " << A_equacoes[l][c] << " ";
-			}
-		}
-		if (valores[l] < 0) {
-			cout << "| " << valores[l] << " ";
-		}
-		else {
-			cout << "|  " << valores[l] << " ";
 		}
 		cout << endl;
 	}
