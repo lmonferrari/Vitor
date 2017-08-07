@@ -1,0 +1,6 @@
+﻿  Primeiro.cpp
+c:\users\luiz\documents\github\vitor\primeiro - copia\primeiro\primeiro.cpp(53): warning C4838: a conversão de 'double' em 'float' requer uma conversão de restrição
+c:\users\luiz\documents\github\vitor\primeiro - copia\primeiro\primeiro.cpp(53): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\luiz\documents\github\vitor\primeiro - copia\primeiro\primeiro.cpp(76): warning C4101: 'n': variável local não referenciada
+  Primeiro.vcxproj -> C:\Users\luiz\Documents\GitHub\Vitor\Primeiro - Copia\Debug\Primeiro.exe
+  Primeiro.vcxproj -> C:\Users\luiz\Documents\GitHub\Vitor\Primeiro - Copia\Debug\Primeiro.pdb (Partial PDB)
